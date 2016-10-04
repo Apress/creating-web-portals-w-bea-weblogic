@@ -1,0 +1,202 @@
+/* ================= Blueinfinity ======================= */
+
+BODY{
+	background-color: #D7DFF6;
+	font-family:Tahoma,Helvetica,Verdana,Arial,sans-serif;
+	font-size:9pt;
+	margin:0px;
+	background-repeat: no-repeat;
+}
+
+A:LINK{
+	font-family:Tahoma,Helvetica,Verdana,Arial,sans-serif;
+ }
+
+A:VISITED{
+	font-family:Tahoma,Helvetica,Verdana,Arial,sans-serif;
+ }
+
+TD{ 
+	font-family:Tahoma,Helvetica,Verdana,Arial,sans-serif; 
+	font-size:9pt;    
+}
+
+UL, LI { list-style-type: circle; color: #0863D8; }
+
+/* === Portal Styles === */
+
+/* Use for the background color of the portal header */
+.headerBgColor {  background-color: #0C136B}
+
+/* Tab background color */
+.titlebar{ background-color: #eeeeee; }
+
+/* Used when tabs are being displayed as text vs GIFs */
+.tabselected{
+	font-family:Tahoma,Helvetica,Verdana,Arial,sans-serif;
+	font-size:9pt;
+	font-weight: bold;
+	color: #000000;
+	text-decoration: none; 
+	vertical-align: middle;
+}
+.tabunselected{
+	font-family:Tahoma,Helvetica,Verdana,Arial,sans-serif;
+	font-size:9pt;
+	font-weight: bold;
+	color: #0863D8;
+	text-decoration: none; 
+	vertical-align: middle;
+}
+
+.homebackground { background-color: #769BDF; }
+.contentbgcolor { background-color: #D7DFF6; }
+
+/* === Portlet Styles ==== */
+
+.portletcontainer {
+	font-family:Tahoma,Helvetica,Verdana,Arial,sans-serif;
+	background-color: #D7DFF6;
+}
+.portletcontainerBlended {
+	font-family:Tahoma,Helvetica,Verdana,Arial,sans-serif;
+	background-color: #769BDF;
+}
+.portlettitlebar{
+	background-color: #0863D8;
+	color: #FFFFFF;
+	font-family:Tahoma,Helvetica,Verdana,Arial,sans-serif;
+	font-size:9pt;
+	font-weight: bold;
+}
+/* exact duplicate of .portlettitlebar until we convert completely to .portlettitlebar */
+.portletheading{
+	background-color: #0863D8;
+	color: #FFFFFF;
+	font-family:Tahoma,Helvetica,Verdana,Arial,sans-serif;
+	font-size:9pt;
+	font-weight: bold;
+}
+.portletbanner{
+	color: #0C136B;
+	FONT-SIZE:12pt;
+	font-weight: bold;
+}
+.portletheader{
+	color: #0C136B;
+	font-weight: bold;
+}
+.portletcontent {
+	font-size:9pt;
+}
+.portletfooter{
+	font-size:8pt;
+}
+
+
+/* ================= Content ======================= */
+
+/* style used for content/page heading */
+.pageheader{
+  font-family:Tahoma,Helvetica,Verdana,Arial,sans-serif;
+  COLOR:#000000;
+  LINE-HEIGHT: 18pt;
+  FONT-SIZE:14pt;
+  FONT-WEIGHT:bold;
+}
+
+/* use for any instructional text */
+.instructions{
+  font-family:Tahoma,Helvetica,Verdana,Arial,sans-serif;
+  COLOR:#000000;
+  FONT-SIZE:9pt;
+}
+
+.contentheading{
+	color: #0C136B;
+	FONT-SIZE:12pt;
+	font-weight: bold;
+}
+.contentsubheading{
+	color: #0C136B;
+	font-weight: bold;
+}
+.minortext{
+	font-size:8pt;
+}
+.headerlink{
+	FONT-SIZE:12pt;
+	font-weight: bold;
+}
+
+
+/* use for any error message text */
+.errorMessage{
+	font-family:Tahoma,Helvetica,Verdana,Arial,sans-serif;
+	COLOR:red;
+}
+
+/* use for any success message text */
+.successMessage{
+	font-family:Tahoma,Helvetica,Verdana,Arial,sans-serif;
+	COLOR:green;
+}
+
+
+/* Use for lists where we want the row colors to be the same each row. */
+.row {
+  BACKGROUND-COLOR: white;
+}
+
+/* Use for multi-coloumn lists where we want the row colors to be different each row. */
+.row1 {
+  BACKGROUND-COLOR: white;
+}
+
+/* Use for multi-coloumn lists where we want the row colors to be different each row. */
+.row2 {
+  BACKGROUND-COLOR: lightgrey;
+}
+
+/* Use for adding space at end of line items list. */
+.spacerRow {
+  BACKGROUND-COLOR: white;
+  HEIGHT: 10px;
+}
+
+/* Use for adding space at end of line items list. */
+.emptyRow {
+  HEIGHT: 15px;
+}
+
+
+form {  margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px}
+
+
+/* Use for all labels that are associated with some sort of input field. */
+.fieldlabel{
+  TEXT-ALIGN: right;
+}
+
+.priorityLow {
+  color:blue;
+  FONT-WEIGHT:bold;
+}
+.priorityMedium {
+  color:goldenrod;
+  FONT-WEIGHT:bold;
+}
+.priorityHigh {
+  color:red;
+  FONT-WEIGHT:bold;
+}
+.listHighlight {
+  BACKGROUND-COLOR: #769BDF; 
+}
+.reportHeader {
+	font-size:8pt;
+	BACKGROUND-COLOR: #769BDF;
+}
+.reportSection {
+  BACKGROUND-COLOR: silver;
+}

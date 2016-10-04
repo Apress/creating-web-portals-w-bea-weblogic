@@ -1,0 +1,12 @@
+ <a href ="http://www.ipl.org/div/potus/fdroosevelt.html">Franklin Delano Roosevelt, 1933-1945</a> 
+ <a href ="http://www.ipl.org/div/potus/hstruman.html">Harry S. Truman, 1945-1953</a> 
+ <a href ="http://www.ipl.org/div/potus/ddeisenhower.html">Dwight David Eisenhower 1953-1961</a> 
+ <a href ="http://www.ipl.org/div/potus/jfkennedy.html">John Fitzgerald Kennedy, 1961-1963</a> 
+ <a href ="http://www.ipl.org/div/potus/lbjohnson.html">Lyndon Baines Johnson, 1963-1969</a> 
+ <a href ="http://www.ipl.org/div/potus/rmnixon.html">Richard Milhous Nixon, 1969-1974</a> 
+ <a href ="http://www.ipl.org/div/potus/grford.html">Gerald Rudolph Ford, 1974-1977</a> 
+ <a href ="http://www.ipl.org/div/potus/jecarter.html">James Earl Carter, Jr., 1977-1981</a> 
+ <a href ="http://www.ipl.org/div/potus/rwreagan.html">Ronald Wilson Reagan, 1981-1989</a> 
+ <a href ="http://www.ipl.org/div/potus/ghwbush.html">George Herbert Walker Bush, 1989-1993</a> 
+ <a href ="http://www.ipl.org/div/potus/wjclinton.html">William Jefferson Clinton, 1993-2001</a> 
+ <a href ="http://www.ipl.org/div/potus/gwbush.html">George Walker Bush, 2001-</a> 

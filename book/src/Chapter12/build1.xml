@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!-- edited with XML Spy v3.0.7 NT (http://www.xmlspy.com) by Rob Castle (NuWave Solutions, LLC) -->
+<!-- =================================================================== -->
+<!-- $Id: build.xml,v 1.34 2001/10/26 21:04:22 inder Exp $              -->
+<!-- =================================================================== -->
+<project name="project" default="core" basedir=".">
+	<target name="init">
+		<!-- include top-level common properties -->
+		<property file="./build.properties"/>
+		<!-- The root directory of the workspace -->
+		<property name="project.home" value="."/>
+		<!-- The destination directory for the builds -->
+		<property name="project.build" value="${project.home}/build"/>
+		<property name="project.buildjardir" value="${project.home}/build/ejbjar"/>
+		<property name="project.build.war" value="${project.home}/build/war"/>
+		<property name="project.src" value="${project.home}/src"/>
+		<property name="project.lib" value="${project.home}/src/lib"/>
+		<!-- The destination directory for all the compiled classes. -->
+		<property name="project.classbindir" value="${project.build}/classes"/>
+		<!-- The staging directory of all the components -->
+		<property name="project.staging" value="${project.home}/staging/mywebapp"/>
+		<property name="project.staging.framework" value="${project.staging}/framework"/>
+		<property name="project.staging.portlets" value="${project.staging}/portlets"/>
+		<property name="project.staging.webinf" value="${project.staging}/WEB-INF"/>
+		<!-- The root directory of all the components. -->
+		<property name="project.war.framework" value="${project.build.war}/framework"/>
+		<property name="project.war.portlets" value="${project.build.war}/portlets"/>
+		<property name="project.war.webinf" value="${project.build.war}/WEB-INF"/>
+		<property name="project.war.lib" value="${project.build.war}/WEB-INF/lib"/>
+		<property name="project.war.classes" value="${project.build.war}/WEB-INF/classes"/>
+		<!-- Deployment directories -->
+		<property name="bea.home" value="/bea"/>
+		<property name="weblogic.home" value="${bea.home}/weblogic700"/>
+		<property name="weblogic.lib" value="${weblogic.home}/server/lib"/>
+		<property name="deploy.dir" value="${bea.home}/user_projects/myDomain/beaApps/portalApp"/>
+		<!-- project Components -->
+		<property name="project.war" value="mywebapp.war"/>
+		<property name="project.ear" value="portalApp.ear"/>
+		<property name="project.ejbjar" value="projectEjb.jar"/>
+		<!-- Classpaths -->
+		<property name="project.classpath" value="${project.classbindir}:${weblogic.lib}"/>
+	</target>
+	<target name="compile" depends="init">
+		<echo message="project.classpath = "/>
+		<echo message="${project.classpath}"/>
+		<mkdir dir="${project.classbindir}"/>
+		<!-- project Classes -->
+		<javac debug="${javac.debug.option}" srcdir="${project.src}" destdir="${project.classbindir}" classpath="${project.classpath}" includes="com/**"/>
+	</target>
+	<target name="war" depends="init">
+		<!-- Make the war directory -->
+		<mkdir dir="${project.build.war}"/>
+		<mkdir dir="${project.war.lib}"/>
+		<mkdir dir="${project.war.webinf}"/>
+		<mkdir dir="${project.war.classes}"/>
+		<mkdir dir="${project.war.framework}"/>
+		<mkdir dir="${project.war.portlets}"/>
+		<echo>1</echo>
+		<echo>2</echo>
+		<copy todir="${project.war.framework}">
+			<fileset dir="${project.staging.framework}"/>
+		</copy>
+		<copy todir="${project.war.portlets}">
+			<fileset dir="${project.staging.portlets}"/>
+		</copy>
+		<copy todir="${project.war.webinf}">
+			<fileset dir="${project.staging.webinf}"/>
+		</copy>
+		<delete dir="${project.war.classes}"/>
+		<copy todir="${project.war.classes}">
+			<fileset dir="${project.classbindir}"/>
+		</copy>
+		<delete file="${project.build}/${project.war}"/>
+		<jar jarfile="${project.build}/${project.war}" basedir="${project.build.war}" excludes="cvs"/>
+	</target>
+	<target name="deploywar" depends="init">
+		<copy todir="${deploy.dir}">
+			<fileset dir="${project.build}/${project.war}"/>
+		</copy>
+	</target>
+	<target name="clean" depends="init">
+		<delete dir="${project.build}"/>
+	</target>
+	<target name="banner">
+		<echo>+---------------------------------------+</echo>
+		<echo>+    Building project Application      +</echo>
+		<echo>+---------------------------------------+</echo>
+	</target>
+	<target name="core" depends="banner, clean, compile, war, deploywar"/>
+</project>

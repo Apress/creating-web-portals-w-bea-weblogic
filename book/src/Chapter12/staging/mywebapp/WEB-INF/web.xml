@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+
+  <display-name>myportal</display-name>
+  <description>WebApp</description>
+
+  <context-param>
+    <param-name>P13N_DEFAULT_NAMESPACE</param-name>
+    <param-value>portal</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>P13N_APPLICATION_URL</param-name>
+    <param-value>/application</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>PORTAL_AUTO_LOGIN</param-name>
+    <param-value>true</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>HTTPS_URL_PATTERNS</param-name>
+    <param-value>/security/login.jsp,
+            /security/new_user.jsp,
+            /security/userProcessor.inputprocessor,
+            /security/loginProcessor.inputprocessor</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>DEFAULT_USER_PROFILE_TYPE</param-name>
+    <param-value></param-value>
+  </context-param>
+
+  <listener>
+    <listener-class>com.bea.p13n.servlets.AnonymousProfileListener</listener-class>
+  </listener>
+
+  <listener>
+    <listener-class>com.bea.p13n.tracking.listeners.SessionEventListener</listener-class>
+  </listener>
+
+  <servlet>
+    <servlet-name>portalwebflow</servlet-name>
+    <servlet-class>com.bea.portal.appflow.servlets.internal.PortalWebflowServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>portalwebflow</servlet-name>
+    <url-pattern>/application/*</url-pattern>
+  </servlet-mapping>
+
+  <session-config>
+    <session-timeout>15</session-timeout>
+  </session-config>
+
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+
+  <taglib>
+    <taglib-uri>ent.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/ent_taglib.jar</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>portal.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/portal_taglib.jar</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>portlet.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/portlet_taglib.jar</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>ren.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/ren_taglib.jar</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>res.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/res_taglib.jar</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>util.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/util_taglib.jar</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>visitor.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/visitor_taglib.jar</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>weblogic.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/weblogic-tags.jar</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>es.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/es_taglib.jar</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>i18n.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/i18n_taglib.jar</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>lic.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/lic_taglib.jar</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>um.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/um_taglib.jar</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>webflow.tld</taglib-uri>
+    <taglib-location>/WEB-INF/lib/webflow_taglib.jar</taglib-location>
+  </taglib>
+
+  <security-constraint>
+    <display-name></display-name>
+    <web-resource-collection>
+      <web-resource-name>Pages which require login</web-resource-name>
+      <description>Pages which require login</description>
+      <url-pattern>/framework/security/need_group.jsp</url-pattern>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+  </security-constraint>
+
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <realm-name>default</realm-name>
+    <form-login-config>
+      <form-login-page>/framework/security/login.jsp</form-login-page>
+      <form-error-page>/framework/security/badlogin.jsp</form-error-page>
+    </form-login-config>
+  </login-config>
+
+  <ejb-ref>
+    <description>The PortalManager for this webapp</description>
+    <ejb-ref-name>ejb/PortalManager</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.portal.manager.ejb.PortalManagerHome</home>
+    <remote>com.bea.portal.manager.ejb.PortalManager</remote>
+  </ejb-ref>
+
+  <ejb-ref>
+    <description>The PropertySetManager for this webapp</description>
+    <ejb-ref-name>ejb/PropertySetManager</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.p13n.property.PropertySetManagerHome</home>
+    <remote>com.bea.p13n.property.PropertySetManager</remote>
+  </ejb-ref>
+
+  <ejb-ref>
+    <description>The UserManager for this webapp</description>
+    <ejb-ref-name>ejb/UserManager</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.p13n.usermgmt.UserManagerHome</home>
+    <remote>com.bea.p13n.usermgmt.UserManager</remote>
+  </ejb-ref>
+
+  <ejb-ref>
+    <description>The GroupManager for this webapp</description>
+    <ejb-ref-name>ejb/GroupManager</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.p13n.usermgmt.GroupManagerHome</home>
+    <remote>com.bea.p13n.usermgmt.GroupManager</remote>
+  </ejb-ref>
+
+  <ejb-ref>
+    <description>The RulesManager for this application.</description>
+    <ejb-ref-name>ejb/RulesManager</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.p13n.rules.manager.RulesManagerHome</home>
+    <remote>com.bea.p13n.rules.manager.RulesManager</remote>
+  </ejb-ref>
+
+  <ejb-ref>
+    <description>The Pipeline Executor</description>
+    <ejb-ref-name>ejb/PipelineExecutor</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.p13n.appflow.pipeline.PipelineExecutorHome</home>
+    <remote>com.bea.p13n.appflow.pipeline.PipelineExecutor</remote>
+  </ejb-ref>
+
+  <ejb-ref>
+    <description>The EventService for this webapp</description>
+    <ejb-ref-name>ejb/EventService</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.bea.p13n.events.EventServiceHome</home>
+    <remote>com.bea.p13n.events.EventService</remote>
+  </ejb-ref>
+
+</web-app>

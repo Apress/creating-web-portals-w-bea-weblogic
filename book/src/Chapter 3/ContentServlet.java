@@ -1,0 +1,66 @@
+package com.nsw.samples;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
+import java.util.*;
+
+public class ContentServlet extends HttpServlet {
+  private static final String CONTENT_TYPE = "text/html";
+  private static final String PARAM_CONTENT_DIRECTORY = "CONTENT_DIRECTORY";
+  private static final String PARAM_CONTENT = "CONTENT";
+  private static final String ERROR_NO_CONTENT_FOUND = "The document you requested no longer exists.";
+  private static final String ERROR_NO_PARAM = "Please specifiy a content file.";
+  private static final String ERROR_READ_FAIL = "Error: Failed reading the content file.";
+
+  private String contentDirectory;
+
+  public void init(ServletConfig config) throws ServletException {
+
+    contentDirectory = config.getInitParameter(PARAM_CONTENT_DIRECTORY);
+
+  }
+
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+
+    response.setContentType(CONTENT_TYPE);
+    PrintWriter out = response.getWriter();
+    String html = "";
+
+    String content = request.getParameter(PARAM_CONTENT);
+
+    if ((content != null) && (!content.equals(""))) {
+      File contentFile = new File(contentDirectory, content);
+
+      if (contentFile.exists()) {
+        FileReader reader = new FileReader(contentFile);
+
+        try {
+          char[] data = new char[(int)contentFile.length()];
+          reader.read(data);
+          html = new String(data);
+        }
+        catch (IOException ioe) {
+          System.out.println(ERROR_READ_FAIL);
+          html = ERROR_NO_CONTENT_FOUND;
+        }
+
+      }
+      else {
+        html = ERROR_NO_CONTENT_FOUND;
+      }
+    }
+    else {
+      html = ERROR_NO_PARAM;
+    }
+
+    out.println("<html>");
+    out.println("<head><title>DescriptionServlet</title></head>");
+    out.println("<body>");
+    out.println("<p>");
+    out.println(html);
+    out.println("</p>");
+    out.println("</body></html>");
+  }
+}

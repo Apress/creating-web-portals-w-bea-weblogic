@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE weblogic-web-app PUBLIC "-//BEA Systems, Inc.//DTD Web Application 7.0//EN" "http://www.bea.com/servers/wls700/dtd/weblogic700-web-jar.dtd">
+
+<weblogic-web-app>
+
+  <reference-descriptor>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/PortalManager</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_portal.PortalManager</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/PropertySetManager</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_personalization.PropertySetManager</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/UserManager</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_personalization.UserManager</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/GroupManager</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_personalization.GroupManager</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/RulesManager</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_personalization.RulesManager</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/PipelineExecutor</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_personalization.PipelineExecutor</jndi-name>
+    </ejb-reference-description>
+    <ejb-reference-description>
+      <ejb-ref-name>ejb/EventService</ejb-ref-name>
+      <jndi-name>${APPNAME}.BEA_personalization.EventService</jndi-name>
+    </ejb-reference-description>
+  </reference-descriptor>
+
+  <session-descriptor>
+    <session-param>
+      <param-name>CookieName</param-name>
+      <param-value>JSESSIONID_mywebapp</param-value>
+    </session-param>
+    <session-param>
+      <param-name>CookiePath</param-name>
+      <param-value>/mywebapp</param-value>
+    </session-param>
+    <session-param>
+      <param-name>PersistentStoreType</param-name>
+      <param-value>memory</param-value>
+    </session-param>
+    <session-param>
+      <param-name>TimeoutSecs</param-name>
+      <param-value>300</param-value>
+    </session-param>
+  </session-descriptor>
+
+  <jsp-descriptor>
+    <jsp-param>
+      <param-name>keepgenerated</param-name>
+      <param-value>true</param-value>
+    </jsp-param>
+    <jsp-param>
+      <param-name>pageCheckSeconds</param-name>
+      <param-value>0</param-value>
+    </jsp-param>
+    <jsp-param>
+      <param-name>verbose</param-name>
+      <param-value>false</param-value>
+    </jsp-param>
+    <jsp-param>
+      <param-name>debug</param-name>
+      <param-value>true</param-value>
+    </jsp-param>
+    <jsp-param>
+      <param-name>printNulls</param-name>
+      <param-value>false</param-value>
+    </jsp-param>
+    <jsp-param>
+      <param-name>compileCommand</param-name>
+      <param-value>javac</param-value>
+    </jsp-param>
+    <jsp-param>
+      <param-name>packagePrefix</param-name>
+      <param-value>jsp_servlet</param-value>
+    </jsp-param>
+    <jsp-param>
+      <param-name>noTryBlocks</param-name>
+      <param-value>false</param-value>
+    </jsp-param>
+    <jsp-param>
+      <param-name>precompile</param-name>
+      <param-value>false</param-value>
+    </jsp-param>
+    <jsp-param>
+      <param-name>compilerSupportsEncoding</param-name>
+      <param-value>true</param-value>
+    </jsp-param>
+    <jsp-param>
+      <param-name>superclass</param-name>
+      <param-value>weblogic.servlet.jsp.JspBase</param-value>
+    </jsp-param>
+    <jsp-param>
+      <param-name>exactMapping</param-name>
+      <param-value>true</param-value>
+    </jsp-param>
+  </jsp-descriptor>
+
+
+  <container-descriptor>
+    <check-auth-on-forward/>
+  </container-descriptor>
+
+</weblogic-web-app>
+
